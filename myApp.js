@@ -2,7 +2,7 @@ const mySecret = process.env['MONGO_URI']
 require('dotenv').config();
 const mongoose = require('mongoose');
 const connection = require('./myConnection.js');
-const model = require('./models.js');
+const PModel = require('./models/person.model.js');
 const Schema = mongoose.Schema;
 
 connection.START_CONNECTION()
@@ -15,7 +15,7 @@ const personSchema = new Schema({
   phone: String,
   email: String
 });
-const Person = mongoose.model("Person", personSchema);
+let Person = mongoose.model("Person", personSchema);
 
 const createAndSavePerson = (done) => {
   done(null /*, data*/);
