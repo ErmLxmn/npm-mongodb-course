@@ -26,7 +26,7 @@ let arrayOfPeople = [
   {name: "Panget", age: 53, favoriteFoods: ["roast chicken", "Manga"]},
   {name: "Pwede Na", age: 24, favoriteFoods: ["wine", "Banana"]}
 ];
-console.log(arrayOfPeople)
+
 const createManyPeople = (arrayOfPeople, done) => {
   Person.create(arrayOfPeople, function (err, people) {
     if (err) return console.error(err);
@@ -35,7 +35,10 @@ const createManyPeople = (arrayOfPeople, done) => {
 };
 
 const findPeopleByName = (personName, done) => {
-  done(null /*, data*/);
+  Person.find({name: personName}, function (err, personFound){
+    if (err) return console.error(err);
+    done(null, personFound)
+  })
 };
 
 const findOneByFood = (food, done) => {
