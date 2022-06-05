@@ -101,10 +101,10 @@ const queryChain = (done) => {
         .sort({favoriteFoods: 1})
         .limit(2)
         .select({name: 1, favoriteFoods: 1})
-        .exec( (err, personChained) => {
+        .exec( (err, data) => {
           if(err) return console.log(err);
-          done(null, personChained);
-        })
+          done(null, data);
+        });
 };
 
 /** **Well Done !!**
