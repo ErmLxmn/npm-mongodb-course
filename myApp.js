@@ -1,24 +1,24 @@
 const mySecret = process.env['MONGO_URI']
 require('dotenv').config();
 const mongoose = require('mongoose');
-const connection = require('./myConnection.js');
-const personSchema = require('./schema/personSchema.js');
-const moment = require('moment');
-const Schema = mongoose.Schema;
+const connection = require('./mongodb.js');
+const personSchema = require('./schemas/personSchema.js');
 
 connection.START_CONNECTION()
 
 const Person = mongoose.model("Person", personSchema);
 
-let Ermel = new Person({
+
+const createAndSavePerson = (done) => {
+  let ermel = new Person({
     name: "Ermel Laxamana",
     age: 27,
     favoriteFoods: ['Pork', 'Coffee', 'etc..']
-})
-
-console.log(Ermel)
-const createAndSavePerson = (done) => {
-  done(null /*, data*/);
+  })
+  ermel.save(function(err, data) {
+    if (err) return console.error(err);
+    done(null, data)
+  });
 };
 
 const createManyPeople = (arrayOfPeople, done) => {
