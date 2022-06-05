@@ -26,10 +26,9 @@ let arrayOfPeople = [
   {name: "Panget", age: 53, favoriteFoods: ["roast chicken", "Manga"]},
   {name: "Pwede Na", age: 24, favoriteFoods: ["wine", "Banana"]}
 ];
-
+console.log(arrayOfPeople)
 const createManyPeople = (arrayOfPeople, done) => {
   Person.create(arrayOfPeople, function (err, people) {
-    console.log(people)
     if (err) return console.error(err);
     done(null, people)
   })
