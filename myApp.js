@@ -29,6 +29,7 @@ let arrayOfPeople = [
 
 const createManyPeople = (arrayOfPeople, done) => {
   Person.create(arrayOfPeople, function (err, people) {
+    console.log(people)
     if (err) return console.error(err);
     done(null, data)
   })
