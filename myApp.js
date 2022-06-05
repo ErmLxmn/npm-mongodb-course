@@ -2,10 +2,12 @@ const mySecret = process.env['MONGO_URI']
 require('dotenv').config();
 const mongoose = require('mongoose');
 const connection = require('./myConnection.js');
+const model = require('./models.js');
+const Schema = mongoose.Schema;
 
 connection.START_CONNECTION()
 
-let Person;
+let Person = model.Person;
 
 const createAndSavePerson = (done) => {
   done(null /*, data*/);
