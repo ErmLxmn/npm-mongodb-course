@@ -7,7 +7,7 @@ const Schema = mongoose.Schema;
 
 connection.START_CONNECTION()
 
-const personSchema = new Schema({
+let personSchema = new Schema({
   personId : Number,
   name: {type: String, required: true},
   dob: Date,
@@ -15,7 +15,10 @@ const personSchema = new Schema({
   phone: String,
   email: String
 });
-let Person = mongoose.model("Person", personSchema);
+
+let Person1 = mongoose.model("Person", personSchema);
+
+let Person = new Person1();
 
 const createAndSavePerson = (done) => {
   done(null /*, data*/);
